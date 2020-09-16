@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <title>Work Day Scheduler</title>
+  </head>
+
+  <body>
+    <header class="jumbotron">
+      <h1 class="display-3">Work Day Scheduler</h1>
+      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p id="currentDay" class="lead"></p>
+    </header>
+    
+    <div class="container">
+      <!-- Timeblocks go here -->
+      <div class="time-block">
+        
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">9am</div>
+          </div>
+          <div class="col-8">
+            <div class="description" value="9"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">10am</div>
+          </div>
+          <div class="col-8">
+            <div class="description" value="10"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">11am</div>
+          </div>
+          <div class="col-8">
+            <div class="description" value="11"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">12pm</div>
+          </div>
+          <div class="col-8">
+            <div class="description" value="12"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">1pm</div>
+          </div>
+          <div class="col-8">
+            <div class="description" value="1"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">2pm</div>
+          </div>
+          <div class="col-8">
+            <div class="description" value="2"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">3pm</div>
+          </div>
+          <div class="col-8">
+            <div class="description" value="3"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">4pm</div>
+          </div>
+          <div class="col-8">
+            <div class="description" value="4"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="hour">5pm</div>
+          </div>
+          <div class="col-8">
+            <div class="description" id="5"><input type="text"></div>
+          </div>
+          <div class="col-2">
+            <div class="saveBtn">Save</div>
+          </div>
+        </div>
+
+      
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="moment.js"></script>
+    
+    <script type="text/javascript">
+    
+    //Displays current date 
+    var currentWeekday = moment().format("dddd");
+    var currentDate = moment().format("MMM Do YY");
+    $("#currentDay").text(currentWeekday);
+    $("#currentDay").append(" " + currentDate);
+
+    //Color-codes the current hour on schedule
+    var currentHour = moment().format("h");
+    var workHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+
+    if (currentHour === 5) { //It was 5 o'clock at the time I was trying this, but couldn't get it to work
+      var colorFive = $("#6");
+      colorFive.removeClass("description");
+      colorFive.addClass("present");
+    };
+    //More code for trying to color-code the current hour that didn't work
+    //for (var i = 0; i < workHours.length; i++) {
+      //if (currentHour === workHours[i]) {
+        //var checkHour = $(".description").val(); //I'm sure this code doesn't work
+        //if (checkHour === workHours[i]) {
+          //$("this").append(".present");
+        //}
+      //}
+    //};
+    
+    </script>
+  </body>
+</html>
